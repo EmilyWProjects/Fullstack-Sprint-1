@@ -1,0 +1,23 @@
+<html lang="en">
+    <head>
+        <title>Restaurants</title>
+        <link rel="stylesheet" type="text/css" href="./styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    </head>
+    <body>
+        <main class="main-content">
+          <h2><u>Menu for <%= restaurant.name %></u></h2>
+          <h3>Fresh <%= menu.cuisine %> cuisine!</h3>
+          <ul>
+            <% menu.items.forEach(item => { %>
+            <li>
+              <strong><%= item.name %></strong> - <%= item.description %> - ($<%= item.price %>) -
+              <%if(item.dailySpecial) { %> <strong>..::..ON SPECIAL! DON'T MISS OUT!..::..</strong> <% } %>
+            </li>
+            <% }) %>
+          </ul>
+          <a href="/">Home</a>
+          <a href="/alerts">Check out our daily specials!</a>
+        </main>
+    </body>
+</html>
