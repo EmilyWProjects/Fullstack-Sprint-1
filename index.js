@@ -53,9 +53,23 @@ app.get('/restaurant', (request, response) => {
   console.log(`restaurantId: ${restaurantId}`);
 });
 
-  //Add any other required routes here
 
+//Get alerts page and generates daily special from menu generation which are filtered so only the specials are displayed
+app.get('/alerts', (request, response) => {
+  const specials = Restaurants.map((restaurant) => {
+  const menu = generateMenu();
+  const specialItems = menu.items.filter((item) => item.dailySpecial);
+    return {
+      restaurantName: restaurant.name,
+      specialItems: specialItems
+    };
+  });
+  response.render('alerts', { specials });
+});
+
+
+//Run from port
 const port = 3000;
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:3000`);
 });
