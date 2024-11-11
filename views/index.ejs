@@ -6,17 +6,27 @@
     </head>
     <body>
         <main class="main-content">
-            <h1>Restaurant Menus</h1>
-            <h2>Please choose your restaurant to get the menu</h2>
-            <form action="/restaurant" method="GET">
-                <label for="restaurantId">Select a restaurant:</label>
-                <select name="restaurantId" id="restaurantId">
-                    <% restaurants.forEach((restaurant) => { %>
-                        <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
-                    <% }) %>
-                </select>
-                <button type="submit">Get the menu!</button>
-            </form>
+          <h1>Restaurant Menus</h1>
+          <h2>Please choose your restaurant to get the menu</h2>
+          <form action="/restaurant" method="GET">
+            <label for="restaurantId">Select a restaurant:</label>
+            <select name="restaurantId" id="restaurantId">
+              <% restaurants.forEach((restaurant) => { %>
+              <option value="<%= restaurant.id %>">
+                <%= restaurant.name %>
+              </option>
+              <% }) %>
+            </select>
+            <button type="submit">Get the menu!</button>
+          </form>
+          <p> </p>
+          <p> </p>
+          <h2>Here is our fan pick of the day!</h2>
+           <h3>Check out this AMAZING dish from <%= restaurantName %> which spacializes in <%= randomCuisine %> cuisine!</h3>
+           <p><strong><%= randomMenuItem.name %></strong></p>
+           <p><%= randomMenuItem.description %>-<%= randomMenuItem.price %></p>
+    
+          <a href="/alerts">Check out our daily specials!</a>
         </main>
-    </body>
+      </body>
 </html>
